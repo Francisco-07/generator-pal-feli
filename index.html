@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super generator para el feli</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="container">
+    <h1>Lista de Números Aleatorios</h1>
+    <button id="generateButton" class="btn">Generar Números</button>
+    <div id="numberList" class="ul"></div>
+
+    <script>
+      function generateRandomNumber() {
+        return Math.floor(100000000000 + Math.random() * 900000000000)
+      }
+
+      function generateNumberList() {
+        const numberList = []
+        for (let i = 0; i < 30; i++) {
+          numberList.push(generateRandomNumber())
+        }
+        return numberList
+      }
+
+      function displayNumbers(numbers) {
+        const listElement = document.getElementById('numberList')
+        listElement.innerHTML = '' // Limpiar la lista antes de agregar nuevos números
+        numbers.forEach((number) => {
+          const listItem = document.createElement('div')
+          listItem.textContent = number
+          listElement.appendChild(listItem)
+        })
+      }
+
+      document
+        .getElementById('generateButton')
+        .addEventListener('click', () => {
+          const randomNumbers = generateNumberList()
+          displayNumbers(randomNumbers)
+        })
+    </script>
+  </body>
+</html>
